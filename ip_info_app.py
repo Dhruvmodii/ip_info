@@ -85,19 +85,19 @@ if submitted:
                 for k, v in ip_result.items():
                     st.write(f"**{k}**: {v}")
 
-                # Map plot
-                st.markdown("### 🗺️ Location on Map")
-                location_df = pd.DataFrame({
-                    'lat': [ip_result['Latitude 📍']],
-                    'lon': [ip_result['Longitude 📍']]
-                })
-                st.map(location_df)
-
             # WHOIS Info (only for URL)
             if is_url:
                 st.markdown("### 🧾 WHOIS Information")
                 whois_result = get_whois_info(input_value)
                 for k, v in whois_result.items():
                     st.write(f"**{k}**: {v}")
+
+           # Map plot
+                st.markdown("### 🗺️ Location on Map")
+                location_df = pd.DataFrame({
+                    'lat': [ip_result['Latitude 📍']],
+                    'lon': [ip_result['Longitude 📍']]
+                })
+                st.map(location_df)
     else:
         st.warning("⚠️ Please enter a valid IP or URL.")
